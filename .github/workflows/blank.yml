@@ -1,0 +1,64 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  pull_request_review:
+  pull_request_target:
+  create:
+  delete:
+  discussion:
+  discussion_comment:
+  fork:
+  issues:
+  label:
+  issue_comment:
+  commit_comment:
+  merge_group:
+  milestone:
+    type: [opened, deleted]
+  public:
+  status: [ error, failure, pending and success ]
+  workflow_run:
+  schedule:
+    - cron: "min hours dayofmonth month dayofweek"
+    - cron: "0 0,12 25 11 1-5"         
+    - cron: "0 0-12 26 12 MON-FRI"  # every hour between 0 and 12 on 26th of Dec between mon to friday
+    - cron: "0 0-12 26 12 MON,FRI"
+  
+  
+  
+    
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs: # These runs at the same time as of the action triggered
+  # This workflow contains a single job called "build"
+  # each job has a unique identifier a name
+  build:
+    # The type of runner that the job will run on
+    # type of machine to run the Job
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
